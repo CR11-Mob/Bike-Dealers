@@ -1,27 +1,26 @@
-import { brands, models, bikeDetails } from "./../../../bikesData";
+import {
+  brands,
+  models,
+  bikeDetails,
+  allBikesData,
+} from "./../../../bikesData";
 
 import { useState, useEffect } from "react";
 
-export default function BudgetFilter() {
+export default function BudgetFilter(props) {
   // console.log(brands);
   // console.log(models);
   // console.log(bikeDetails);
 
-  const [budgetState, setBudget] = useState(null);
+  // const [budgetState, setBudget] = useState(null);
 
   const handleBudgetChange = (e) => {
-    setBudget(e.target.value);
-  };
-
-  const filterBikeBudget = () => {
-    let bikeDetailsArr = [...bikeDetails];
-    console.log("[]", bikeDetailsArr);
+    props.setBudget(e.target.value);
   };
 
   useEffect(() => {
-    console.log(budgetState);
-    // filterBikeBudget();
-  }, [budgetState]);
+    console.log(props.budgetState);
+  }, [props.budgetState]);
 
   return (
     <div>

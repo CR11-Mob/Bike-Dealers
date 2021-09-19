@@ -2,27 +2,27 @@ import { useState, useEffect } from "react";
 
 import { brands, models, bikeDetails } from "./../../../bikesData";
 
-export default function SelectBike() {
+export default function SelectBike(props) {
   // console.log("brands:", brands);
   // console.log("models:", models);
 
-  const [brandState, setBrand] = useState("All");
+  // const [brandState, setBrand] = useState("All");
 
-  const [modelState, setModel] = useState("");
-
-  useEffect(() => {
-    console.log("brand State:", brandState);
-    console.log("model State:", modelState);
-  }, [brandState, modelState]);
+  // const [modelState, setModel] = useState("");
 
   useEffect(() => {
-    if (brandState !== "All")
-      for (let i = 0; i < models[brandState].length; i++) {
-        let modelName = models[brandState][i];
-        console.log("models name:", modelName);
-        console.log(`${modelName} details:`, bikeDetails[modelName]);
-      }
-  }, [brandState]);
+    console.log("brand State:", props.brandState);
+    console.log("model State:", props.modelState);
+  }, [props.brandState, props.modelState]);
+
+  // useEffect(() => {
+  //   if (props.brandState !== "All")
+  //     for (let i = 0; i < models[props.brandState].length; i++) {
+  //       let modelName = models[props.brandState][i];
+  //       console.log("models name:", modelName);
+  //       console.log(`${modelName} details:`, bikeDetails[modelName]);
+  //     }
+  // }, [props.brandState]);
 
   return (
     <div>
@@ -32,8 +32,8 @@ export default function SelectBike() {
           <select
             key={"brands"}
             name="brands"
-            value={brandState}
-            onChange={(e) => setBrand(e.target.value)}
+            value={props.brandState}
+            onChange={(e) => props.setBrand(e.target.value)}
           >
             <option>{"All"}</option>
             {brands.map((brand) => (
@@ -49,11 +49,11 @@ export default function SelectBike() {
             key={"models"}
             name="models"
             value=""
-            onChange={(e) => setModel(e.target.value)}
-            disabled={brandState === "All"}
+            onChange={(e) => props.setModel(e.target.value)}
+            disabled={props.brandState === "All"}
           >
-            {brandState !== "All" &&
-              models[brandState].map((model) => (
+            {props.brandState !== "All" &&
+              models[props.brandState].map((model) => (
                 <option key={model} name={model} value={model}>
                   {model}
                 </option>
