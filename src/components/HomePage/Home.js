@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 
-import { brands, models, bikeDetails, allBikesData } from "./../../bikesData";
+import {
+  brands,
+  models,
+  detailsByModel,
+  allBikesData,
+} from "./../../bikesData";
 
 // import NavBar from "../NavBar/NavBar";
 import "./Home.css";
@@ -25,7 +30,7 @@ export default function Home() {
       let arr = [];
       for (let i = 0; i < models[brandState].length; i++) {
         let modelName = models[brandState][i];
-        let details = bikeDetails[modelName];
+        let details = detailsByModel[modelName];
         console.log("models name:", modelName);
         console.log(`${modelName} details:`, details);
         arr.push(details);
@@ -75,12 +80,12 @@ export default function Home() {
           </Grid> */}
         </Grid>
         <Grid item xs={12} sm={8} md={8} style={{ backgroundColor: "pink" }}>
-          <Bikes
+          {/* <Bikes
             brandState={brandState}
             modelState={modelState}
             budgetState={budgetState}
             selectedBikeState={selectedBikeState}
-          />
+          /> */}
         </Grid>
       </Grid>
     </Grid>

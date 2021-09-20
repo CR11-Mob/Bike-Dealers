@@ -2,13 +2,17 @@
 import Home from "./components/HomePage/Home";
 
 import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store/configureStore";
 
 function App() {
   return (
-    <Router>
-      {/* <NavBar /> */}
-      <Home />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        {/* <NavBar /> */}
+        <Home />
+      </Router>
+    </Provider>
   );
 }
 

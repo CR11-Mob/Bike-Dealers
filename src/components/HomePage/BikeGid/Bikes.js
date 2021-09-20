@@ -1,4 +1,4 @@
-import { allBikesData } from "./../../../bikesData";
+import allBikesData from "./../../../bikesData";
 
 import { useState, useEffect } from "react";
 

@@ -1,10 +1,24 @@
 import { useState, useEffect } from "react";
 
-import { brands, models, bikeDetails } from "./../../../bikesData";
+import { models, detailsByModel, brands } from "./../../../bikesData";
+
+import {
+  filterBikesByBrand,
+  getBikeBrands,
+} from "./../../../store/slices/bikes";
+
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SelectBike(props) {
   // console.log("brands:", brands);
   // console.log("models:", models);
+  const brands = useSelector(getBikeBrands);
+  const dispatch = useDispatch();
+  const bikes = useSelector((state) => state.entities.bikes.brands);
+
+  console.log("brands:", brands);
+
+  console.log("Bikes Sorted by Brands:", bikes);
 
   // const [brandState, setBrand] = useState("All");
 
@@ -19,6 +33,7 @@ export default function SelectBike(props) {
   //   if (props.brandState !== "All")
   //     for (let i = 0; i < models[props.brandState].length; i++) {
   //       let modelName = models[props.brandState][i];
+
   //       console.log("models name:", modelName);
   //       console.log(`${modelName} details:`, bikeDetails[modelName]);
   //     }
@@ -33,7 +48,10 @@ export default function SelectBike(props) {
             key={"brands"}
             name="brands"
             value={props.brandState}
-            onChange={(e) => props.setBrand(e.target.value)}
+            onChange={(e) => {
+              props.setBrand(e.target.value);
+              dispatch(filterBikesByBrand({ brand: e.target.value }));
+            }}
           >
             <option>{"All"}</option>
             {brands.map((brand) => (
@@ -44,7 +62,7 @@ export default function SelectBike(props) {
           </select>
         </div>
 
-        <div>
+        {/* <div>
           <select
             key={"models"}
             name="models"
@@ -59,7 +77,7 @@ export default function SelectBike(props) {
                 </option>
               ))}
           </select>
-        </div>
+        </div> */}
       </div>
     </div>
   );
