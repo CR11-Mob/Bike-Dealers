@@ -1,38 +1,58 @@
 import allBikesData from "./../../bikesData";
 
 import { createSlice } from "@reduxjs/toolkit";
-import { createSelector } from "reselect";
 
-const initialState = { brands: [], models: [], types: [] };
+const initialState = { modelNames: [], selectedBikes: [] };
 
 const slice = createSlice({
   name: "bikes",
   initialState,
   reducers: {
-    filterBikesByBrand: (bikes, action) => {
-      bikes.brands = allBikesData.filter(
+    getAllBikes: (bikes, action) => {
+      bikes.selectedBikes = allBikesData;
+    },
+
+    filterByBrand: (bikes, action) => {
+      bikes.selectedBikes = allBikesData.filter(
         (bike) => bike.brand === action.payload.brand
+      );
+
+      const arr = () => {
+        let modelArr = [];
+        bikes.selectedBikes.map((bike) => {
+          return modelArr.push(bike.model);
+        });
+        return modelArr;
+      };
+
+      bikes.modelNames = arr();
+    },
+
+    filterByModel: (bikes, action) => {
+      bikes.selectedBikes = allBikesData.filter(
+        (bike) => bike.model === action.payload.model
       );
     },
   },
 });
 
 // Actions
-export const { filterBikesByBrand } = slice.actions;
+export const { getAllBikes, filterByBrand, filterByModel } = slice.actions;
 
-// Memoized Selector
-export const getBikeBrands = createSelector(
-  (state) => state.bikes,
-  (bikes) => {
-    let brandArr = [];
-    allBikesData.map((bike) => {
-      return !brandArr.includes(bike.brand)
-        ? brandArr.push(bike.brand)
-        : brandArr;
-    });
-    return brandArr;
-  }
-);
+// Selectors
+export const getBrands = () => {
+  let brandArr = [];
+  allBikesData.map((bike) => {
+    return !brandArr.includes(bike.brand)
+      ? brandArr.push(bike.brand)
+      : brandArr;
+  });
+  return brandArr;
+};
+
+export const getModels = (state) => state.entities.bikes.modelNames;
+
+export const getBikeDetails = (state) => state.entities.bikes.selectedBikes;
 
 // Reducer
 export default slice.reducer;
