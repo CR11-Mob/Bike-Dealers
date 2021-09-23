@@ -1,44 +1,29 @@
-import allBikesData from "./../../../bikesData";
+import {
+  getAllBikes,
+  getBikeDetails,
+} from "./../../../store/slices/entities/bikes";
 
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Bikes(props) {
-  const [budgetFilterArr, setBudgetFilterArr] = useState([]);
-
-  const filterBikeBudget = () => {
-    let arr = [...allBikesData];
-    if (props.budgetState === "70,000 - 1,00,000") {
-      let filteredArr = arr.filter((bike) => bike.price >= "70,000");
-      console.log(filteredArr);
-      setBudgetFilterArr(filteredArr);
-    }
-  };
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    filterBikeBudget();
-  }, [props.budgetState]);
+    dispatch(getAllBikes());
+  }, []);
+
+  const bikes = useSelector(getBikeDetails);
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      {props.brandState === "All" &&
-        allBikesData.map((bike) => (
-          <div style={{ border: "1px solid black" }}>
-            <div>{bike.brand}</div>
+      {bikes &&
+        bikes.map((bike, index) => (
+          <div key={bike.model}>
+            <div>
+              <img height="100" width="100" src={bike.img} alt={`${index}`} />
+            </div>
             <div>{bike.price}</div>
-          </div>
-        ))}
-      {props.selectedBikeState.map((bike) => (
-        <div style={{ border: "1px solid black" }}>
-          <div>{bike.brand}</div>
-          <div>{bike.price}</div>
-        </div>
-      ))}
-
-      {budgetFilterArr &&
-        budgetFilterArr.map((bike) => (
-          <div style={{ border: "1px solid black" }}>
-            <div>{bike.brand}</div>
-            <div>{bike.price}</div>
+            <div>{bike.model}</div>
           </div>
         ))}
     </div>

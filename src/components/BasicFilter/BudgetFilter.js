@@ -1,10 +1,3 @@
-import {
-  brands,
-  models,
-  bikeDetails,
-  allBikesData,
-} from "./../../../bikesData";
-
 import { useState, useEffect } from "react";
 
 export default function BudgetFilter(props) {

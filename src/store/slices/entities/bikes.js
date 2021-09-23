@@ -1,4 +1,4 @@
-import allBikesData from "./../../bikesData";
+import allBikesData from "../../../bikesData";
 
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -10,6 +10,7 @@ const slice = createSlice({
   reducers: {
     getAllBikes: (bikes, action) => {
       bikes.selectedBikes = allBikesData;
+      bikes.modelNames = [];
     },
 
     filterByBrand: (bikes, action) => {

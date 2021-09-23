@@ -7,7 +7,7 @@ import {
   getBrands,
   getModels,
   getBikeDetails,
-} from "./../../../store/slices/bikes"; // Importing Actions & Selector Functions
+} from "../../../store/slices/entities/bikes"; // Importing Actions & Selector Functions
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -59,7 +59,9 @@ export default function SelectBike() {
 
   return (
     <div>
-      <div>Search Bike</div>
+      <div>
+        <h4>Search bikes</h4>
+      </div>
       <div>
         <div>
           <select
