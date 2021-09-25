@@ -1,40 +1,40 @@
 import { useState, useEffect } from "react";
 
-import {
-  brands,
-  models,
-  detailsByModel,
-  allBikesData,
-} from "./../../bikesData";
-
-// import NavBar from "../NavBar/NavBar";
 import "./Home.css";
-import BudgetFilter from "../BasicFilter/BudgetFilter";
+import NavBar from "../NavBar/NavBar";
 import SelectBike from "./SelectBike/SelectBike";
 import Bikes from "./BikeGid/Bikes";
 
-import { styled, Grid, Paper } from "@material-ui/core";
+import { Grid, Container } from "@material-ui/core";
 
 export default function Home() {
   return (
-    <Grid container direction="column">
-      <Grid item xs={12} style={{ backgroundColor: "gray" }}>
-        <div className="hero-container">
-          <h1>HERO</h1>
-        </div>
-      </Grid>
-
-      <Grid item container xs={12}>
+    <Grid
+      // className="container"
+      container
+      // columns={{ xs: 10, sm: 10, md: 12 }}
+    >
+      <Grid
+        item
+        container
+        // xs={10}
+        // sm={10}
+        // md={12}
+        columns={{ xs: 10, sm: 10, md: 12 }}
+      >
+        <Grid item xs={10} sm={10} md={12}>
+          <Bikes />
+        </Grid>
         <Grid
-          xs={12}
+          xs={2}
           sm={2}
-          md={2}
+          md={4}
           item
           style={{ backgroundColor: "paleturquoise" }}
         >
           <SelectBike />
         </Grid>
-        <Grid item xs={12} sm={10} md={10} style={{ backgroundColor: "pink" }}>
+        <Grid item xs={8} sm={8} md={8} style={{ backgroundColor: "pink" }}>
           <Bikes />
         </Grid>
       </Grid>
