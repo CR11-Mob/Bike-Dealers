@@ -5,35 +5,28 @@ import NavBar from "../NavBar/NavBar";
 import SelectBike from "./SelectBike/SelectBike";
 import Bikes from "./BikeGid/Bikes";
 
-import { Grid, Container } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 
 export default function Home() {
   return (
-    <Grid container>
-      <Grid
-        item
-        container
-        // xs={10}
-        // sm={10}
-        // md={12}
-        columns={{ xs: 10, sm: 10, md: 12 }}
-      >
-        <Grid item xs={10} sm={10} md={12}>
-          <Bikes />
+    <Box sx={{ flexGrow: 1, margin: "0 1rem" }}>
+      <Grid container spacing={6}>
+        <Grid item xs={12} style={{ backgroundColor: "pink" }}>
+          <Box
+            sx={{
+              minHeight: "100vh",
+              backgroundColor: "gray",
+              textAlign: "center",
+            }}
+          >
+            <NavBar />
+            <h1 style={{ margin: 0 }}>HeRO</h1>
+          </Box>
         </Grid>
-        <Grid
-          xs={2}
-          sm={2}
-          md={4}
-          item
-          style={{ backgroundColor: "paleturquoise" }}
-        >
+        <Grid container item spacing={3}>
           <SelectBike />
         </Grid>
-        <Grid item xs={8} sm={8} md={8} style={{ backgroundColor: "pink" }}>
-          <Bikes />
-        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 }
