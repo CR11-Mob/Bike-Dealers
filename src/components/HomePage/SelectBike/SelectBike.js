@@ -71,31 +71,6 @@ export default function SelectBike() {
         <h4>Search bikes</h4>
       </div>
       <div>
-        {/* <FormControl style={{ width: "50%" }}>
-          <InputLabel htmlFor="brand">Brand</InputLabel>
-          <Select
-            key={"brands"}
-            name="brands"
-            defaultValue={brandState}
-            id="brand"
-            label="Brand"
-            onChange={handleBrandChange}
-            variant="outlined"
-          >
-            <MenuItem
-              key="all-brands"
-              name={initialBikeValue}
-              value={initialBikeValue}
-            >
-              <em>All</em>
-            </MenuItem>
-            {brands.map((brand) => (
-              <MenuItem key={brand} name={brand} value={brand}>
-                {brand}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl> */}
         <div>
           <FormControl variant="outlined" style={{ width: "50%" }}>
             <InputLabel id="brand-select">Brands</InputLabel>
@@ -104,7 +79,6 @@ export default function SelectBike() {
               id="brand"
               name="brands"
               value={brandState}
-              // variant="outlined"
               label="Brands"
               onChange={handleBrandChange}
             >
@@ -125,14 +99,13 @@ export default function SelectBike() {
         </div>
 
         <div>
-          <FormControl variant="outlined" style={{ width: "50%" }}>
+          <FormControl variant="outlined" style={{ marginTop: "10px", width: "50%" }}>
             <InputLabel id="model-select">Models</InputLabel>
             <Select
               labelId="model-select"
               id="model"
               name="model"
               value={modelState}
-              // variant="outlined"
               label="Models"
               onChange={handleModelChange}
               disabled={brandState === initialBikeValue}
@@ -151,29 +124,6 @@ export default function SelectBike() {
               ))}
             </Select>
           </FormControl>
-        </div>
-        <div>
-          <select
-            key={"models"}
-            name="models"
-            value={modelState}
-            onChange={handleModelChange}
-            disabled={brandState === initialBikeValue}
-          >
-            <option
-              key="all-models"
-              name={initialBikeValue}
-              value={initialBikeValue}
-            >
-              {initialBikeValue}
-            </option>
-            {brandState !== initialBikeValue &&
-              models.map((model) => (
-                <option key={model} name={model} value={model}>
-                  {model}
-                </option>
-              ))}
-          </select>
         </div>
       </div>
     </div>

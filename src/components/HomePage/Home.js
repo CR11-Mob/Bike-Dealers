@@ -9,11 +9,7 @@ import { Grid, Container } from "@material-ui/core";
 
 export default function Home() {
   return (
-    <Grid
-      // className="container"
-      container
-      // columns={{ xs: 10, sm: 10, md: 12 }}
-    >
+    <Grid container>
       <Grid
         item
         container
