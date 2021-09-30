@@ -9,8 +9,8 @@ import { Box, Grid } from "@material-ui/core";
 
 export default function Home() {
   return (
-    <Box sx={{ flexGrow: 1, margin: "0 1rem" }}>
-      <Grid container spacing={6}>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container>
         <Grid item xs={12} style={{ backgroundColor: "pink" }}>
           <Box
             sx={{
@@ -23,7 +23,7 @@ export default function Home() {
             <h1 style={{ margin: 0 }}>HeRO</h1>
           </Box>
         </Grid>
-        <Grid container item spacing={3}>
+        <Grid container item spacing={3} style={{ margin: "0 1rem" }}>
           <SelectBike />
         </Grid>
       </Grid>
