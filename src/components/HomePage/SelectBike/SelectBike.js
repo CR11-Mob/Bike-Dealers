@@ -6,7 +6,7 @@ import { getBrands, getAllBikes } from "./../../bikeSlice"; // selectores
 
 // Material Components
 import { InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
-import { Grid, Box } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 // Components
 import Pagination from "./sub-components/Pagination";
@@ -80,54 +80,16 @@ export default function SelectBike() {
     setSelectedBikes(filteredArr);
   };
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const [bikeGridSize, setBikeGridSize] = useState(5);
-  const [totalPage, setTotalPage] = useState(0);
   const [displayBike, setDisplayBike] = useState([]);
-
-  const getTotalPage = () => {
-    if (bikeGridSize !== 0) {
-      let total = Math.ceil(selectedBikes.length / bikeGridSize);
-      // console.log("total pages:", total);
-      setTotalPage(total);
-    }
-  };
-
-  const getDisplayBike = () => {
-    let length = currentPage * bikeGridSize + bikeGridSize;
-    let arr = [];
-    for (let i = currentPage * bikeGridSize; i < length; i++) {
-      if (selectedBikes[i]) {
-        arr.push(selectedBikes[i]);
-      }
-    }
-    setDisplayBike(arr);
-  };
-
-  useEffect(() => {
-    console.log("Current Page:", currentPage);
-    getDisplayBike();
-  }, [currentPage]);
-
-  useEffect(() => {
-    console.log("Selected Bikes:", selectedBikes);
-    getTotalPage();
-    getDisplayBike();
-  }, [selectedBikes]);
-
-  useEffect(() => {
-    console.log("brand State:", brandState);
-    console.log(`${brandState} model names:`, models);
-    setCurrentPage(0);
-  }, [brandState, modelState]);
 
   return (
     <>
       <Grid container justifyContent="space-between" item xs={12}>
         <Pagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPage={totalPage}
+          brandState={brandState}
+          modelState={modelState}
+          selectedBikes={selectedBikes}
+          setDisplayBike={setDisplayBike}
         />
       </Grid>
 
