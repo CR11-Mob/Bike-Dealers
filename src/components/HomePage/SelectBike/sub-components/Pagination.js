@@ -48,12 +48,14 @@ export default function Pagination(props) {
     setCurrentPage(0);
   }, [brandState, modelState]);
 
+  // Dash Svg icon
   const DashIcon = (props) => (
     <SvgIcon {...props}>
       {/* <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" /> */}
       <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z" />
     </SvgIcon>
   );
+
   return (
     <>
       <Grid item xs={4}>

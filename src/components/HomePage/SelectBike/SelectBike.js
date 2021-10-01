@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 import { getBrands, getAllBikes } from "./../../bikeSlice"; // selectores
 
 // Material Components
-import { InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 
 // Components
 import Pagination from "./sub-components/Pagination";
+import Dropdown from "./sub-components/Dropdown";
 import Bikes from "./sub-components/Bikes";
 
 export default function SelectBike() {
@@ -28,6 +28,7 @@ export default function SelectBike() {
   const [modelState, setModel] = useState(initialBikeValue);
   const [models, setModels] = useState({});
   const [selectedBikes, setSelectedBikes] = useState(allBikes);
+  const [displayBike, setDisplayBike] = useState([]);
 
   // Brands with models
   useEffect(() => {
@@ -42,46 +43,6 @@ export default function SelectBike() {
     setModels(obj);
   }, [brands]);
 
-  // Event Handlers
-  const handleBrandChange = (e) => {
-    const value = e.target.value;
-    setBrand(value);
-
-    if (value === initialBikeValue) {
-      setModel(initialBikeValue);
-      setSelectedBikes(allBikes);
-    } else {
-      setModel(initialBikeValue);
-      filterByBrands(value);
-    }
-  };
-
-  const handleModelChange = (e) => {
-    const value = e.target.value;
-    setModel(value);
-
-    if (value === initialBikeValue) {
-      filterByBrands(brandState);
-    } else {
-      filterByModel(value);
-    }
-  };
-
-  // Filter functions
-  const filterByBrands = (brandName) => {
-    let filteredArr = [];
-    filteredArr = allBikes.filter((bike) => bike.brand === brandName);
-    setSelectedBikes(filteredArr);
-  };
-
-  const filterByModel = (modelName) => {
-    let filteredArr = [];
-    filteredArr = allBikes.filter((bike) => bike.model === modelName);
-    setSelectedBikes(filteredArr);
-  };
-
-  const [displayBike, setDisplayBike] = useState([]);
-
   return (
     <>
       <Grid container justifyContent="space-between" item xs={12}>
@@ -95,69 +56,17 @@ export default function SelectBike() {
 
       <Grid container item spacing={4} xs={12}>
         <Grid container item xs={2} spacing={2}>
-          <Grid item xs={12}>
-            <h4 style={{ margin: 0 }}>Search bikes</h4>
-          </Grid>
-
-          <Grid item xs={12}>
-            <FormControl variant="outlined" style={{ width: "100%" }}>
-              <InputLabel id="brand-select">Brands</InputLabel>
-              <Select
-                labelId="brand-select"
-                id="brand"
-                name="brands"
-                value={brandState}
-                label={"Brands"}
-                onChange={handleBrandChange}
-              >
-                <MenuItem
-                  key="all-brands"
-                  name={initialBikeValue}
-                  value={initialBikeValue}
-                >
-                  <em>All</em>
-                </MenuItem>
-                {brands.map((brand) => (
-                  <MenuItem key={brand} name={brand} value={brand}>
-                    {brand}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={12}>
-            <FormControl variant="outlined" style={{ width: "100%" }}>
-              <InputLabel id="model-select">Models</InputLabel>
-              <Select
-                labelId="model-select"
-                id="model"
-                name="model"
-                value={modelState}
-                label={"Models"}
-                onChange={handleModelChange}
-                disabled={brandState === initialBikeValue}
-              >
-                <MenuItem
-                  key="all-models"
-                  name={initialBikeValue}
-                  value={initialBikeValue}
-                >
-                  <em>All</em>
-                </MenuItem>
-                {brandState !== initialBikeValue &&
-                  models[brandState].map((bike) => (
-                    <MenuItem
-                      key={bike.model}
-                      name={bike.model}
-                      value={bike.model}
-                    >
-                      {bike.model}
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
-          </Grid>
+          <Dropdown
+            initialBikeValue={initialBikeValue}
+            brands={brands}
+            allBikes={allBikes}
+            brandState={brandState}
+            modelState={modelState}
+            setBrand={setBrand}
+            setModel={setModel}
+            models={models}
+            setSelectedBikes={setSelectedBikes}
+          />
         </Grid>
 
         <Grid item xs={10}>
