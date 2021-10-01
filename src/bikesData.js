@@ -408,7 +408,7 @@ const allBikesData = [
 
   {
     brand: "Royal Enfield",
-    model: "Eoyal Enfield classic 350",
+    model: "Royal Enfield classic 350",
     price: "1,90,000",
     type: "cruiser bike",
     img: "https://source.unsplash.com/random/200*100",

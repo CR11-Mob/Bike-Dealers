@@ -56,4 +56,4 @@ export const getModels = (state) => state.entities.bikes.modelNames;
 export const getBikeDetails = (state) => state.entities.bikes.selectedBikes;
 
 // Reducer
-export default slice.reducer;
+// export default slice.reducer;

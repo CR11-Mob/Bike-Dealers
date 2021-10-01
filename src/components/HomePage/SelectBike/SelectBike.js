@@ -1,102 +1,146 @@
-import { useState, useEffect } from "react";
 import "./SelectBike.css";
-import {
-  pageNumber,
-  getPageSize,
-} from "./../../../store/slices/ui/bikePagination";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import {
-  getAllBikes,
-  filterByBrand,
-  filterByModel,
-  getBrands,
-  getModels,
-  getBikeDetails,
-} from "../../../store/slices/entities/bikes"; // Importing Actions & Selector Functions
+import { getBrands, getAllBikes } from "./../../bikeSlice"; // selectores
 
 import { InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
-
 import { Grid, Box } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import { ArrowForward, ArrowBack } from "@material-ui/icons";
 import { SvgIcon } from "@material-ui/core";
+// import {
+//   pageNumber,
+//   getPageSize,
+// } from "./../../../store/slices/ui/bikePagination";
 
-import Bikes from "../BikeGid/Bikes";
+// import {
+//   getAllBikes,
+//   filterByBrand,
+//   filterByModel,
+//   getBrands,
+//   getModels,
+//   getBikeDetails,
+// } from "../../../store/slices/entities/bikes"; // Importing Actions & Selector Functions
 
-import { useDispatch, useSelector } from "react-redux";
+// import Bikes from "../BikeGid/Bikes";
 
 export default function SelectBike() {
-  const dispatch = useDispatch();
+  // const dispatch =
   const initialBikeValue = "All";
 
-  const [pageCount, setPageCount] = useState(0);
+  const brands = useSelector(getBrands);
+  const allBikes = useSelector(getAllBikes);
 
   useEffect(() => {
-    console.log("page count", pageCount);
-    dispatch(pageNumber(pageCount));
-    addActiveBtn();
-  }, [pageCount]);
+    console.log("All Brands:", brands);
+    console.log("All Bikes Data:", allBikes);
+  }, [brands, allBikes]);
+
+  // const loading = useSelector(getLoadingStatus);
+  // useEffect(() => {
+  //   console.log("loading Status:", loading);
+  // }, [loading]);
+
+  // const [pageCount, setPageCount] = useState(0);
+
+  // useEffect(() => {
+  //   console.log("page count", pageCount);
+  //   dispatch(pageNumber(pageCount));
+  //   addActiveBtn();
+  // }, [pageCount]);
 
   // Selectors
-  const brands = useSelector(getBrands);
-  const models = useSelector(getModels);
-  const details = useSelector(getBikeDetails);
-  const pageSize = useSelector(getPageSize);
+
+  // const models = useSelector(getModels);
+  // const details = useSelector(getBikeDetails);
+  // const pageSize = useSelector(getPageSize);
 
   // useEffect(() => {
   //   setTotalCount(pageSize);
   // }, [pageSize]);
 
-  console.log("brands:", brands);
-  console.log("models:", models);
-  console.log("details:", details);
+  // console.log("brands:", brands);
+  // console.log("models:", models);
+  // console.log("details:", details);
 
   // States
   const [brandState, setBrand] = useState(initialBikeValue);
   const [modelState, setModel] = useState(initialBikeValue);
-
-  const [totalCount, setTotalCount] = useState(0);
-
-  const totalCountCal = () => {
-    if (pageSize !== 0) {
-      let total = Math.ceil(details.length / pageSize);
-      console.log(total);
-      setTotalCount(total);
-    }
-  };
+  const [models, setModels] = useState({});
+  const [selectedBikes, setSelectedBikes] = useState(allBikes);
 
   useEffect(() => {
-    setPageCount(0);
-    totalCountCal();
-  }, [pageSize, brandState, modelState]);
+    let obj = {};
+    brands.map((brandName, index) => {
+      console.log(brandName);
+      return (obj[brandName] = allBikes.filter(
+        (bike) => bike.brand === brandName
+      ));
+    });
+    console.log("Boject:", obj);
+    setModels(obj);
+  }, [brands]);
+
+  // const [totalCount, setTotalCount] = useState(0);
+
+  // const totalCountCal = () => {
+  //   if (pageSize !== 0) {
+  //     let total = Math.ceil(details.length / pageSize);
+  //     console.log(total);
+  //     setTotalCount(total);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   setPageCount(0);
+  //   totalCountCal();
+  // }, [pageSize, brandState, modelState]);
 
   // Event Handlers
   const handleBrandChange = (e) => {
     const value = e.target.value;
+    setBrand(value);
+
     if (value === initialBikeValue) {
-      setBrand(value);
-      setModel(value);
-      dispatch(getAllBikes());
+      setModel(initialBikeValue);
+      setSelectedBikes(allBikes);
     } else {
-      setBrand(value);
-      dispatch(filterByBrand({ brand: value }));
+      setModel(initialBikeValue);
+      filterByBrands(value);
     }
   };
 
   const handleModelChange = (e) => {
     const value = e.target.value;
+    setModel(value);
+
     if (value === initialBikeValue) {
-      setModel(value);
-      dispatch(filterByBrand({ brand: brandState }));
+      filterByBrands(brandState);
     } else {
-      setModel(value);
-      dispatch(filterByModel({ model: value }));
+      filterByModel(value);
     }
   };
 
+  const filterByBrands = (brandName) => {
+    let filteredArr = [];
+    filteredArr = allBikes.filter((bike) => bike.brand === brandName);
+    setSelectedBikes(filteredArr);
+  };
+
+  const filterByModel = (modelName) => {
+    let filteredArr = [];
+    filteredArr = allBikes.filter((bike) => bike.model === modelName);
+    setSelectedBikes(filteredArr);
+  };
+
+  useEffect(() => {
+    console.log("Selected Bikes:", selectedBikes);
+  }, [selectedBikes]);
+
   useEffect(() => {
     console.log("brand State:", brandState);
-    console.log("model State:", modelState);
+    console.log(`${brandState} model names:`, models);
   }, [brandState, modelState]);
 
   const DashIcon = (props) => (
@@ -106,14 +150,9 @@ export default function SelectBike() {
     </SvgIcon>
   );
 
-  const addActiveBtn = () => {
-    let nodeList = document.querySelectorAll(".dash_buttons");
-    console.log(nodeList);
-  };
-
   return (
     <>
-      <Grid container justifyContent="space-between" item xs={12}>
+      {/* <Grid container justifyContent="space-between" item xs={12}>
         <Grid item xs={4}>
           <IconButton
             aria-label="back"
@@ -157,7 +196,7 @@ export default function SelectBike() {
             ))}
           </Box>
         </Grid>
-      </Grid>
+      </Grid> */}
 
       <Grid container item spacing={4} xs={12}>
         <Grid container item xs={2} spacing={2}>
@@ -211,19 +250,24 @@ export default function SelectBike() {
                 >
                   <em>All</em>
                 </MenuItem>
-                {models.map((model) => (
-                  <MenuItem key={model} name={model} value={model}>
-                    {model}
-                  </MenuItem>
-                ))}
+                {brandState !== initialBikeValue &&
+                  models[brandState].map((bike) => (
+                    <MenuItem
+                      key={bike.model}
+                      name={bike.model}
+                      value={bike.model}
+                    >
+                      {bike.model}
+                    </MenuItem>
+                  ))}
               </Select>
             </FormControl>
           </Grid>
         </Grid>
 
-        <Grid item xs={10}>
+        {/* <Grid item xs={10}>
           <Bikes />
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );

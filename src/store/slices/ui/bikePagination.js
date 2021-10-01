@@ -48,4 +48,4 @@ export const getPageSize = (state) => state.ui.bikePagination.pageSize;
 export const getBikeView = (state) => state.ui.bikePagination.viewArr;
 
 // Reducer
-export default slice.reducer;
+// export default slice.reducer;
