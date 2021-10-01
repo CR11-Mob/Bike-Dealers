@@ -1,5 +1,5 @@
 import "./Home.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { loadAllBikes } from "./../bikeSlice"; // actions
@@ -15,11 +15,14 @@ export default function Home() {
   const dispatch = useDispatch();
   const loading = useSelector(getLoadingStatus);
 
-  useEffect(async () => {
-    let res = await requestAllBikes();
-    // console.log("--->", res.data);
-    dispatch(loadAllBikes(res.data));
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      let res = await requestAllBikes();
+      // console.log("--->", res.data);
+      dispatch(loadAllBikes(res.data));
+    }
+    fetchData();
+  }, [dispatch]);
 
   useEffect(() => {
     console.log("loading Status:", loading);
