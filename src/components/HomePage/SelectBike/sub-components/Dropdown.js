@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import { InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
 
 export default function Dropdown(props) {
@@ -55,63 +55,75 @@ export default function Dropdown(props) {
   return (
     <>
       <Grid item xs={12}>
-        <h4 style={{ margin: 0 }}>Search bikes</h4>
+        <Box component="h4" style={{ margin: "0 0 1.5rem 0" }}>
+          Search Bikes
+        </Box>
       </Grid>
 
-      <Grid item xs={12}>
-        <FormControl variant="outlined" style={{ width: "100%" }}>
-          <InputLabel id="brand-select">Brands</InputLabel>
-          <Select
-            labelId="brand-select"
-            id="brand"
-            name="brands"
-            value={brandState}
-            label={"Brands"}
-            onChange={handleBrandChange}
-          >
-            <MenuItem
-              key="all-brands"
-              name={initialBikeValue}
-              value={initialBikeValue}
+      <Grid container item spacing={2} style={{ marginBottom: "1rem" }}>
+        <Grid item xs={12}>
+          <FormControl variant="outlined" style={{ width: "100%" }}>
+            <InputLabel id="brand-select">Brands</InputLabel>
+            <Select
+              labelId="brand-select"
+              id="brand"
+              name="brands"
+              value={brandState}
+              label={"Brands"}
+              onChange={handleBrandChange}
             >
-              <em>All</em>
-            </MenuItem>
-            {brands.map((brand) => (
-              <MenuItem key={brand} name={brand} value={brand}>
-                {brand}
+              <MenuItem
+                key="all-brands"
+                name={initialBikeValue}
+                value={initialBikeValue}
+              >
+                <em>All</em>
               </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Grid>
-
-      <Grid item xs={12}>
-        <FormControl variant="outlined" style={{ width: "100%" }}>
-          <InputLabel id="model-select">Models</InputLabel>
-          <Select
-            labelId="model-select"
-            id="model"
-            name="model"
-            value={modelState}
-            label={"Models"}
-            onChange={handleModelChange}
-            disabled={brandState === initialBikeValue}
-          >
-            <MenuItem
-              key="all-models"
-              name={initialBikeValue}
-              value={initialBikeValue}
-            >
-              <em>All</em>
-            </MenuItem>
-            {brandState !== initialBikeValue &&
-              models[brandState].map((bike) => (
-                <MenuItem key={bike.model} name={bike.model} value={bike.model}>
-                  {bike.model}
+              {brands.map((brand) => (
+                <MenuItem key={brand} name={brand} value={brand}>
+                  {brand}
                 </MenuItem>
               ))}
-          </Select>
-        </FormControl>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12}>
+          <FormControl variant="outlined" style={{ width: "100%" }}>
+            <InputLabel id="model-select">Models</InputLabel>
+            <Select
+              labelId="model-select"
+              id="model"
+              name="model"
+              value={modelState}
+              label={"Models"}
+              onChange={handleModelChange}
+              disabled={brandState === initialBikeValue}
+            >
+              <MenuItem
+                key="all-models"
+                name={initialBikeValue}
+                value={initialBikeValue}
+              >
+                <em>All</em>
+              </MenuItem>
+              {brandState !== initialBikeValue &&
+                models[brandState].map((bike) => (
+                  <MenuItem
+                    key={bike.model}
+                    name={bike.model}
+                    value={bike.model}
+                  >
+                    {bike.model}
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Box component="h6">Advance Search</Box>
       </Grid>
     </>
   );

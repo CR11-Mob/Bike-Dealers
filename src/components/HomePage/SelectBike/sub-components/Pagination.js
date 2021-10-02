@@ -1,3 +1,4 @@
+import "./Pagination.css";
 import { useState, useEffect } from "react";
 
 import { Grid, Box } from "@material-ui/core";
@@ -9,7 +10,7 @@ export default function Pagination(props) {
   const { brandState, modelState, selectedBikes, setDisplayBike } = props;
 
   const [currentPage, setCurrentPage] = useState(0);
-  const [bikeGridSize, setBikeGridSize] = useState(5);
+  const [bikeGridSize, setBikeGridSize] = useState(4);
   const [totalPage, setTotalPage] = useState(0);
 
   const getTotalPage = () => {
@@ -83,21 +84,18 @@ export default function Pagination(props) {
         <Box className="dash-icon-box">
           {Array.from({ length: totalPage }, (_, index) => (
             <Box
-              component="span"
-              sx={{
-                "& >:hover": {
-                  color: "red",
-                  fontSize: "1.8rem",
-                },
-              }}
+              //   sx={{
+              //     "& >:hover": {
+              //       color: "red",
+              //       //   fontSize: "1.8rem",
+              //     },
+              //   }}
               className="dash_buttons"
               key={index}
               onClick={() => {
                 setCurrentPage(index);
               }}
-            >
-              <DashIcon color="disabled" />
-            </Box>
+            ></Box>
           ))}
         </Box>
       </Grid>

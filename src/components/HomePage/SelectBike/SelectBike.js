@@ -41,11 +41,17 @@ export default function SelectBike() {
     });
     console.log("Boject:", obj);
     setModels(obj);
-  }, [brands]);
+  }, [brands, allBikes]);
 
   return (
     <>
-      <Grid container justifyContent="space-between" item xs={12}>
+      <Grid
+        container
+        justifyContent="space-between"
+        item
+        xs={12}
+        style={{ marginBottom: "1.5rem" }}
+      >
         <Pagination
           brandState={brandState}
           modelState={modelState}
@@ -54,8 +60,8 @@ export default function SelectBike() {
         />
       </Grid>
 
-      <Grid container item spacing={4} xs={12}>
-        <Grid container item xs={2} spacing={2}>
+      <Grid container item xs={12} justifyContent="space-between">
+        <Grid container item xs={2}>
           <Dropdown
             initialBikeValue={initialBikeValue}
             brands={brands}
@@ -69,7 +75,14 @@ export default function SelectBike() {
           />
         </Grid>
 
-        <Grid item xs={10}>
+        <Grid
+          container
+          item
+          xs={9}
+          // justifyContent="center"
+          // style={{ backgroundColor: "#E7E7E7" }}
+          // spacing={2}
+        >
           <Bikes displayBike={displayBike} />
         </Grid>
       </Grid>

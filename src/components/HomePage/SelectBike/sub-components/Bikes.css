@@ -1,0 +1,11 @@
+.bike-wrapper {
+  background-color: #e7e7e7;
+}
+
+.font-styling {
+  color: rgb(49, 49, 49);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  padding: 0 1rem;
+}

@@ -1,0 +1,29 @@
+.dash-icon-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.dash_buttons {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  cursor: pointer;
+  height: 8%;
+  width: 10%;
+  background-color: rgba(0, 0, 0, 0.26);
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  transition: all 0.6s;
+}
+
+.dash_buttons:hover {
+  background-color: rgba(235, 45, 63, 1);
+  border: 1px solid rgba(235, 45, 63, 1);
+}
+
+.dash_buttons + .dash_buttons {
+  margin-left: 1em;
+}

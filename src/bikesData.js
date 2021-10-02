@@ -52,7 +52,7 @@ const allBikesData = [
     model: "Harley Davidson Iron 883",
     price: "9,26,000",
     type: "cruiser bike",
-    img: "https://source.unsplash.com/random/200*100",
+    img: "./images/ducati-scrambler-2.png",
     specifications: {
       mileage: "-",
       "engine type": "Fan Cooled, 4 Stroke, SI Engine",
@@ -80,7 +80,7 @@ const allBikesData = [
     model: "Ducati Scrambler 800",
     price: "9,80,000",
     type: "sport bike",
-    img: "https://source.unsplash.com/random/200*100",
+    img: "./images/ducati-scrambler-2.png",
     specifications: {
       mileage: "-",
       "engine type": "Fan Cooled, 4 Stroke, SI Engine",
@@ -108,7 +108,7 @@ const allBikesData = [
     model: "Ola S1 Pro",
     price: "1,30,000",
     type: "electric bike",
-    img: "https://source.unsplash.com/random/200*100",
+    img: "./images/ducati-scrambler-2.png",
     specifications: {
       mileage: "-",
       "engine type": "Fan Cooled, 4 Stroke, SI Engine",
@@ -136,7 +136,7 @@ const allBikesData = [
     model: "2021 Suzuki Hayabusa",
     price: "16,58,000",
     type: "sport bike",
-    img: "https://source.unsplash.com/random/200*100",
+    img: "./images/ducati-scrambler-2.png",
     specifications: {
       mileage: "-",
       "engine type": "Fan Cooled, 4 Stroke, SI Engine",

@@ -48,7 +48,7 @@ export default function Home() {
               <h1 style={{ margin: 0 }}>HeRO</h1>
             </Box>
           </Grid>
-          <Grid container item spacing={3} style={{ margin: "0 1rem" }}>
+          <Grid container item spacing={3} style={{ margin: "2rem 1rem" }}>
             <SelectBike />
           </Grid>
         </Grid>
