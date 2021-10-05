@@ -5,7 +5,7 @@ export const requestAllBikes = () => {
     try {
       setTimeout(() => {
         resolve({ data: allBikesData });
-      }, 1000);
+      }, 500);
     } catch (err) {
       reject(err);
     }

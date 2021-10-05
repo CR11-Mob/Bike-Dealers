@@ -1,8 +1,9 @@
 import "./SelectBike.css";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { getBrands, getAllBikes } from "./../../bikeSlice"; // selectores
+import { getBrands, getAllBikes } from "./../../bikeSlice"; // Selectors
+import { setBrandsData } from "./../../bikeSlice"; // Actions
 
 // Material Components
 import { Grid } from "@material-ui/core";
@@ -14,6 +15,7 @@ import Bikes from "./sub-components/Bikes";
 
 export default function SelectBike() {
   const initialBikeValue = "All";
+  const dispatch = useDispatch();
 
   const brands = useSelector(getBrands);
   const allBikes = useSelector(getAllBikes);
@@ -26,21 +28,22 @@ export default function SelectBike() {
   // States
   const [brandState, setBrand] = useState(initialBikeValue);
   const [modelState, setModel] = useState(initialBikeValue);
-  const [models, setModels] = useState({});
   const [selectedBikes, setSelectedBikes] = useState(allBikes);
   const [displayBike, setDisplayBike] = useState([]);
 
   // Brands with models
   useEffect(() => {
-    let obj = {};
-    brands.map((brandName, index) => {
-      // console.log(brandName);
-      return (obj[brandName] = allBikes.filter(
-        (bike) => bike.brand === brandName
-      ));
-    });
-    console.log("Boject:", obj);
-    setModels(obj);
+    // let obj = {};
+    // brands.map((brandName) => {
+    //   // console.log(brandName);
+    //   return (obj[brandName] = allBikes.filter(
+    //     (bike) => bike.brand === brandName
+    //   ));
+    // });
+    // console.log("Boject:", obj);
+    // setModels(obj);
+
+    dispatch(setBrandsData(brands));
   }, [brands, allBikes]);
 
   return (
@@ -70,7 +73,6 @@ export default function SelectBike() {
             modelState={modelState}
             setBrand={setBrand}
             setModel={setModel}
-            models={models}
             setSelectedBikes={setSelectedBikes}
           />
         </Grid>
@@ -80,7 +82,7 @@ export default function SelectBike() {
           item
           xs={9}
           // justifyContent="center"
-          // style={{ backgroundColor: "#E7E7E7" }}
+          style={{ backgroundColor: "#E7E7E7" }}
           // spacing={2}
         >
           <Bikes displayBike={displayBike} />

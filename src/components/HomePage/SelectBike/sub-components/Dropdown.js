@@ -1,6 +1,10 @@
 import { Grid, Box } from "@material-ui/core";
 import { InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
 
+import { useEffect } from "react";
+import { getBrandsData } from "./../../../bikeSlice";
+import { useSelector } from "react-redux";
+
 export default function Dropdown(props) {
   const {
     initialBikeValue,
@@ -10,9 +14,14 @@ export default function Dropdown(props) {
     modelState,
     setBrand,
     setModel,
-    models,
     setSelectedBikes,
   } = props;
+
+  const models = useSelector(getBrandsData);
+
+  useEffect(() => {
+    console.log("Boject2:", models);
+  }, [models]);
 
   // Event Handlers
   const handleBrandChange = (e) => {

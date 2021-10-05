@@ -49,10 +49,10 @@ const detailsByModel = {
 const allBikesData = [
   {
     brand: "Harley Davidson",
-    model: "Harley Davidson Iron 883",
+    model: "Iron 883",
     price: "9,26,000",
     type: "cruiser bike",
-    img: "./images/ducati-scrambler-2.png",
+    img: "/images/ducati-scrambler-2.png",
     specifications: {
       mileage: "-",
       "engine type": "Fan Cooled, 4 Stroke, SI Engine",
@@ -77,10 +77,10 @@ const allBikesData = [
 
   {
     brand: "Ducati",
-    model: "Ducati Scrambler 800",
+    model: "Scrambler 800",
     price: "9,80,000",
     type: "sport bike",
-    img: "./images/ducati-scrambler-2.png",
+    img: "/images/ducati-scrambler-2.png",
     specifications: {
       mileage: "-",
       "engine type": "Fan Cooled, 4 Stroke, SI Engine",
@@ -105,10 +105,10 @@ const allBikesData = [
 
   {
     brand: "Ola",
-    model: "Ola S1 Pro",
+    model: "S1 Pro",
     price: "1,30,000",
     type: "electric bike",
-    img: "./images/ducati-scrambler-2.png",
+    img: "/images/ducati-scrambler-2.png",
     specifications: {
       mileage: "-",
       "engine type": "Fan Cooled, 4 Stroke, SI Engine",
@@ -133,10 +133,10 @@ const allBikesData = [
 
   {
     brand: "Suzuki",
-    model: "2021 Suzuki Hayabusa",
+    model: "Hayabusa",
     price: "16,58,000",
     type: "sport bike",
-    img: "./images/ducati-scrambler-2.png",
+    img: "/images/ducati-scrambler-2.png",
     specifications: {
       mileage: "-",
       "engine type": "Fan Cooled, 4 Stroke, SI Engine",
@@ -160,7 +160,7 @@ const allBikesData = [
   },
   {
     brand: "Suzuki",
-    model: "Suzuki V-Strom 650XT",
+    model: "V-Strom 650XT",
     price: "9,00,000",
     type: "cruiser bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -188,7 +188,7 @@ const allBikesData = [
 
   {
     brand: "Hero",
-    model: "Hero Glamour",
+    model: "Glamour",
     price: "83,000",
     type: "commuter bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -215,7 +215,7 @@ const allBikesData = [
   },
   {
     brand: "Hero",
-    model: "Hero Splendor Plus",
+    model: "Splendor Plus",
     price: "68,000",
     type: "commuter bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -243,7 +243,7 @@ const allBikesData = [
 
   {
     brand: "Yamaha",
-    model: "Yamaha R15 V4",
+    model: "R15 V4",
     price: "1,86,000",
     type: "sport bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -270,7 +270,7 @@ const allBikesData = [
   },
   {
     brand: "Yamaha",
-    model: "Yamaha Fascino 125",
+    model: "Fascino 125",
     price: "80,000",
     type: "commuter bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -298,7 +298,7 @@ const allBikesData = [
 
   {
     brand: "KTM",
-    model: "KTM RC 390",
+    model: "RC 390",
     price: "2,78,000",
     type: "sport bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -325,7 +325,7 @@ const allBikesData = [
   },
   {
     brand: "KTM",
-    model: "KTM 200 Duke",
+    model: "Duke 200",
     price: "1,86,000",
     type: "sport bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -380,7 +380,7 @@ const allBikesData = [
   },
   {
     brand: "Honda",
-    model: "Honda Hornet 2.0",
+    model: "Hornet 2.0",
     price: "1,35,000",
     type: "sport bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -408,7 +408,7 @@ const allBikesData = [
 
   {
     brand: "Royal Enfield",
-    model: "Royal Enfield classic 350",
+    model: "Classic 350",
     price: "1,90,000",
     type: "cruiser bike",
     img: "https://source.unsplash.com/random/200*100",
@@ -435,7 +435,7 @@ const allBikesData = [
   },
   {
     brand: "Royal Enfield",
-    model: "Royal Enfield himalayan",
+    model: "Himalayan",
     price: "1,90,000",
     type: "cruiser bike",
     img: "https://source.unsplash.com/random/200*100",

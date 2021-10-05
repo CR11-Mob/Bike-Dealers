@@ -1,11 +1,22 @@
 import "./Bikes.css";
 import { useEffect } from "react";
+import { useHistory } from "react-router";
+
+import { startLoading } from "./../../../bikeSlice";
+import { useDispatch } from "react-redux";
 
 import { Grid } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
 
 export default function Bikes(props) {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   console.log("History:", history);
+  // }, [history]);
+
   useEffect(() => {
     console.log("Bikes Grid:", props.displayBike);
   }, [props.displayBike]);
@@ -25,7 +36,7 @@ export default function Bikes(props) {
 
             <Grid container item xs={12} style={{ height: "20%" }}>
               <Grid item xs={12} className="font-styling">
-                {bike.model}
+                {`${bike.brand} ${bike.model}`}
               </Grid>
 
               <Grid
@@ -45,7 +56,17 @@ export default function Bikes(props) {
               xs={12}
               style={{ height: "30%", padding: "1rem 1rem", color: "#e7e7e7" }}
             >
-              <IconButton aria-label="forward" size="small">
+              <IconButton
+                onClick={() => {
+                  let path = `/${bike.brand}-${bike.model}`;
+                  let replaceSpace = path.replace(/\s/g, "_");
+                  console.log(replaceSpace);
+                  history.push(replaceSpace);
+                  // dispatch(startLoading());
+                }}
+                aria-label="forward"
+                size="small"
+              >
                 <ArrowForward fontSize="inherit" />
               </IconButton>
             </Grid>

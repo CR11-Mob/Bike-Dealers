@@ -2,7 +2,7 @@ import "./Home.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadAllBikes } from "./../bikeSlice"; // actions
+import { loadAllBikes, startLoading, stopLoading } from "./../bikeSlice"; // actions
 import { getLoadingStatus } from "./../bikeSlice"; // selectors
 
 import NavBar from "../NavBar/NavBar";
@@ -16,13 +16,24 @@ export default function Home() {
   const loading = useSelector(getLoadingStatus);
 
   useEffect(() => {
-    async function fetchData() {
-      let res = await requestAllBikes();
-      // console.log("--->", res.data);
-      dispatch(loadAllBikes(res.data));
+    if (!loading) {
+      dispatch(startLoading());
     }
-    fetchData();
-  }, [dispatch]);
+  }, []);
+
+  useEffect(() => {
+    // async function fetchData() {
+    //   let res = await requestAllBikes();
+    //   // console.log("--->", res.data);
+    //   dispatch(loadAllBikes(res.data));
+    // }
+    // fetchData();
+    if (loading) {
+      setTimeout(() => {
+        dispatch(stopLoading());
+      }, 1000);
+    }
+  }, [loading]);
 
   useEffect(() => {
     console.log("loading Status:", loading);
