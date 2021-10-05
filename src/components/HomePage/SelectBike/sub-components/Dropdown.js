@@ -70,8 +70,15 @@ export default function Dropdown(props) {
         </Box>
       </Grid>
 
-      <Grid container item spacing={2} style={{ marginBottom: "1rem" }}>
-        <Grid item xs={12}>
+      <Grid
+        container
+        item
+        xs={12}
+        md={12}
+        spacing={2}
+        style={{ marginBottom: "1rem" }}
+      >
+        <Grid item xs={6} md={12}>
           <FormControl variant="outlined" style={{ width: "100%" }}>
             <InputLabel id="brand-select">Brands</InputLabel>
             <Select
@@ -98,7 +105,7 @@ export default function Dropdown(props) {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid item xs={6} md={12}>
           <FormControl variant="outlined" style={{ width: "100%" }}>
             <InputLabel id="model-select">Models</InputLabel>
             <Select

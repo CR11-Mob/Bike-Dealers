@@ -21,7 +21,15 @@ export default function Bikes(props) {
     <>
       {props.displayBike &&
         props.displayBike.map((bike, index) => (
-          <Grid container item xs={3} key={bike.model} className="bike-wrapper">
+          <Grid
+            container
+            item
+            xs={6}
+            sm={3}
+            md={3}
+            key={bike.model}
+            className="bike-wrapper"
+          >
             <Grid
               item
               xs={12}

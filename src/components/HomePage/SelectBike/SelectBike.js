@@ -36,6 +36,8 @@ export default function SelectBike() {
         justifyContent="space-between"
         item
         xs={12}
+        lg={10}
+        xl={8}
         style={{ marginBottom: "1.5rem" }}
       >
         <Pagination
@@ -46,8 +48,15 @@ export default function SelectBike() {
         />
       </Grid>
 
-      <Grid container item xs={12} justifyContent="space-between">
-        <Grid container item xs={2}>
+      <Grid
+        container
+        item
+        xs={12}
+        lg={10}
+        xl={8}
+        justifyContent="space-between"
+      >
+        <Grid container item xs={12} md={2}>
           <Dropdown
             initialBikeValue={initialBikeValue}
             brands={brands}
@@ -63,7 +72,8 @@ export default function SelectBike() {
         <Grid
           container
           item
-          xs={9}
+          xs={12}
+          md={9}
           // justifyContent="center"
           style={{ backgroundColor: "#E7E7E7" }}
           // spacing={2}

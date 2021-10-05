@@ -59,7 +59,7 @@ export default function Pagination(props) {
 
   return (
     <>
-      <Grid item xs={4}>
+      <Grid item xs={6} md={4} lg={6}>
         <IconButton
           aria-label="back"
           onClick={() => {
@@ -80,7 +80,7 @@ export default function Pagination(props) {
         </IconButton>
       </Grid>
 
-      <Grid item xs={4}>
+      <Grid item xs={6} md={4} lg={6}>
         <Box className="dash-icon-box">
           {Array.from({ length: totalPage }, (_, index) => (
             <Box

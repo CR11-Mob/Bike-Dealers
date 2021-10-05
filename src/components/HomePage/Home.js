@@ -49,11 +49,17 @@ export default function Home() {
                 textAlign: "center",
               }}
             >
-              <NavBar />
+              {/* <NavBar /> */}
               <h1 style={{ margin: 0 }}>HERO</h1>
             </Box>
           </Grid>
-          <Grid container item spacing={3} style={{ margin: "2rem 1rem" }}>
+          <Grid
+            container
+            item
+            xs={12}
+            justifyContent="center"
+            style={{ margin: "2rem" }}
+          >
             <SelectBike />
           </Grid>
         </Grid>

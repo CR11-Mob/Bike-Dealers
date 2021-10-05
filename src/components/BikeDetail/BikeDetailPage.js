@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import {
-  getLoadingStatus,
-  getAllModelsData,
-  getAllBikes,
-} from "./../bikeSlice"; // Selectors
+import { getLoadingStatus, getAllModelsData } from "./../bikeSlice"; // Selectors
 import { startLoading, stopLoading, setModelsData } from "./../bikeSlice"; // Actions
 import { useSelector, useDispatch } from "react-redux";
 
@@ -13,7 +9,7 @@ export default function BikeDetailPage(props) {
   const dispatch = useDispatch();
   const loading = useSelector(getLoadingStatus);
   const modelsData = useSelector(getAllModelsData);
-  // const allBikes = useSelector(getAllBikes);
+
   const { bikeUrlStr } = useParams();
 
   const [modelName, setModelName] = useState("");
