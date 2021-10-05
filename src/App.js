@@ -10,19 +10,20 @@ import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     async function fetchData() {
       let res = await requestAllBikes();
       console.log("--->", res.data);
       dispatch(loadAllBikes(res.data));
-      // dispatch(stopLoading());
     }
     fetchData();
   }, [dispatch]);
+
   return (
     <>
       <Switch>
-        <Route path={`/:modelName`}>
+        <Route path={`/:bikeUrlStr`}>
           <BikeDetailPage />
         </Route>
         <Route path="/">

@@ -2,16 +2,12 @@ import "./Bikes.css";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
 
-import { startLoading } from "./../../../bikeSlice";
-import { useDispatch } from "react-redux";
-
 import { Grid } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
 
 export default function Bikes(props) {
   const history = useHistory();
-  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   console.log("History:", history);
@@ -60,9 +56,8 @@ export default function Bikes(props) {
                 onClick={() => {
                   let path = `/${bike.brand}-${bike.model}`;
                   let replaceSpace = path.replace(/\s/g, "_");
-                  console.log(replaceSpace);
+                  // console.log(replaceSpace);
                   history.push(replaceSpace);
-                  // dispatch(startLoading());
                 }}
                 aria-label="forward"
                 size="small"

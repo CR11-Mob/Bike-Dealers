@@ -2,14 +2,13 @@ import "./Home.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadAllBikes, startLoading, stopLoading } from "./../bikeSlice"; // actions
+import { startLoading, stopLoading, setBrandsData } from "./../bikeSlice"; // actions
 import { getLoadingStatus } from "./../bikeSlice"; // selectors
 
 import NavBar from "../NavBar/NavBar";
 import SelectBike from "./SelectBike/SelectBike";
 
 import { Box, Grid } from "@material-ui/core";
-import { requestAllBikes } from "../../apis/bikeApi";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -22,14 +21,9 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // async function fetchData() {
-    //   let res = await requestAllBikes();
-    //   // console.log("--->", res.data);
-    //   dispatch(loadAllBikes(res.data));
-    // }
-    // fetchData();
     if (loading) {
       setTimeout(() => {
+        dispatch(setBrandsData());
         dispatch(stopLoading());
       }, 1000);
     }
@@ -56,7 +50,7 @@ export default function Home() {
               }}
             >
               <NavBar />
-              <h1 style={{ margin: 0 }}>HeRO</h1>
+              <h1 style={{ margin: 0 }}>HERO</h1>
             </Box>
           </Grid>
           <Grid container item spacing={3} style={{ margin: "2rem 1rem" }}>

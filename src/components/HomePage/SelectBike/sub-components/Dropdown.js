@@ -1,9 +1,10 @@
+import { useEffect } from "react";
+
+import { getBrandsData } from "./../../../bikeSlice"; // Selectors
+import { useSelector } from "react-redux";
+
 import { Grid, Box } from "@material-ui/core";
 import { InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
-
-import { useEffect } from "react";
-import { getBrandsData } from "./../../../bikeSlice";
-import { useSelector } from "react-redux";
 
 export default function Dropdown(props) {
   const {
