@@ -1,7 +1,7 @@
 import "./Pagination.css";
 import { useState, useEffect } from "react";
 
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, createSvgIcon } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import { ArrowForward, ArrowBack } from "@material-ui/icons";
 import { SvgIcon } from "@material-ui/core";
@@ -50,11 +50,16 @@ export default function Pagination(props) {
   }, [brandState, modelState]);
 
   // Dash Svg icon
-  const DashIcon = (props) => (
-    <SvgIcon {...props}>
-      {/* <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" /> */}
-      <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z" />
-    </SvgIcon>
+  // const DashIcon = (props) => (
+  //   <SvgIcon {...props}>
+  //     {/* <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" /> */}
+  //     <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z" />
+  //   </SvgIcon>
+  // );
+
+  const DashIcon = createSvgIcon(
+    <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z" />,
+    "Dash"
   );
 
   return (
