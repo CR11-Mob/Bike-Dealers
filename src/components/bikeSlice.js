@@ -37,7 +37,7 @@ const slice = createSlice({
     setModelsData: (bikes) => {
       let obj = {};
       bikes.allBikes.map((bike) => {
-        return (obj[bike.model] = bike);
+        return (obj[`${bike.model}`] = bike);
       });
       bikes.allDataByModels = obj;
     },

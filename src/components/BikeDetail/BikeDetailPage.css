@@ -1,0 +1,15 @@
+.icon-btn-color {
+  /* color: rgba(0, 0, 0, 0.26); */
+  background-color: rgba(235, 45, 63, 1);
+  transition: all 0.6s;
+}
+
+.icon-btn-color:hover {
+  /* color: rgba(235, 45, 63, 1); */
+  background-color: rgba(235, 45, 63, 1);
+}
+
+.accordion-style {
+  box-shadow: none !important;
+  background-color: #e7e7e7 !important;
+}

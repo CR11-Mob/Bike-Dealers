@@ -65,11 +65,11 @@ const allBikesData = [
       abs: "No",
       "seat opening switch": "Yes",
     },
+    "key specsArr": ["engine", "brakes", "tyre type"],
     "key specs": {
-      engine: "803 cc",
-      power: "-",
-      brakes: "Double Disc",
-      "tyre type": "Tubeless",
+      engine: { svg: "/images/svg/engine-1", data: "803 cc" },
+      brakes: { svg: "/images/svg/brake-1", data: "Double Disc" },
+      "tyre type": { svg: "/images/svg/tyre-1", data: "Tubeless" },
     },
     highlights:
       "Harley-Davidson has announced the Freedom Promise scheme under which you can trade in any Sportster model within a year of purchase for a Softail and get a discount worth the full price you had paid for the Sportster. Know more details here. One of the most handsome two-wheelers from Harley Davidson, the Sportster Iron 883 is an entry-level cruiser that is assembled in India. The bike is more of a veteran biker’s choice than of a beginner. The bike confidently upholds the all-black charm with no chrome highlights. The cruiser gets an elongated and low shape with seat at just 760 mm above the ground. The bike sports tough 9-spoke wheels and a drag-style handlebar that pushes the rider in a little bent aggressive riding position as of a retro sport bike. The gorgeous beast draws dynamism from the Evolution V-twin 883 cc air-cooled engine that sits in a bare-bone chassis and generates 50.6 PS @ 5500 rpm worth of maximum power along with 70 Nm of peak torque at 3500 rpm. This power is transmitted to the 9-spoke wheels of the bike with the help of a seamless 5–speed transmission gearbox.",
@@ -451,12 +451,12 @@ const allBikesData = [
       abs: "No",
       "seat opening switch": "Yes",
     },
-    "key specs": {
-      engine: "411 cc",
-      power: "24.31 PS",
-      brakes: "Double Disc",
-      "tyre type": "Tube",
-    },
+    "key specs": [
+      { engine: "411 cc" },
+      { power: "24.31 PS" },
+      { brakes: "Double Disc" },
+      { "tyre type": "Tube" },
+    ],
     highlights:
       "Royal Enfield has launched the 2021 Royal Enfield Classic 350 in India. It is priced at Rs 1,84,374 for the base single-channel ABS variant (Redditch Series) and Rs 1,93,123 for the most affordable colour variant (Halcyon Series) with dual-channel ABS.",
   },
