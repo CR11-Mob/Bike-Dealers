@@ -137,7 +137,7 @@ export default function BikeDetailPage(props) {
             <List>
               {bikeData["key specsArr"] &&
                 bikeData["key specsArr"].map((spec) => (
-                  <ListItem disablePadding key={spec}>
+                  <ListItem key={spec}>
                     <Tooltip title={spec}>
                       <ListItemIcon>
                         <SvgIcon>
