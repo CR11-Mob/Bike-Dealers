@@ -30,6 +30,7 @@ import {
   Inbox,
 } from "@material-ui/icons";
 import { Tooltip } from "@material-ui/core";
+import { SvgIcon } from "@material-ui/core";
 
 export default function BikeDetailPage(props) {
   const dispatch = useDispatch();
@@ -139,7 +140,9 @@ export default function BikeDetailPage(props) {
                   <ListItem disablePadding key={spec}>
                     <Tooltip title={spec}>
                       <ListItemIcon>
-                        <Inbox />
+                        <SvgIcon>
+                          <path d={`${bikeData["key specs"][spec].svg}`} />
+                        </SvgIcon>
                       </ListItemIcon>
                     </Tooltip>
                     <ListItemText>
